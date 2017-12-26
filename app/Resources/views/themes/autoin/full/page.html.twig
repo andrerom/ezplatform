@@ -1,0 +1,18 @@
+{% extends noLayout == true ? viewbaseLayout : pagelayout %}
+
+{% block content %}
+    <section class="blog">
+        <div class="row">
+           <div class="small-12 columns">
+               <h1>{{ ez_render_field(content, 'title') }}</h1>
+           </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                {{ ez_render_field(content, 'description') }}
+            </div>
+        </div>
+
+        {% include '@ezdesign/parts/children.html.twig' %}
+    </section>
+{% endblock %}

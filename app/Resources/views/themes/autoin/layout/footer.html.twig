@@ -1,0 +1,16 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if not ez_is_field_empty(content, 'description') %}
+                    {{ ez_render_field(content, 'description') }}
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if not ez_is_field_empty(content, 'location') %}
+                    {{ ez_render_field(content, 'location', {'parameters': {'showInfo': false, 'scrollWheel': false, 'width': '23rem', 'height': '15rem'} }) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</footer>

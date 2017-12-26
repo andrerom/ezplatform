@@ -1,0 +1,29 @@
+<div class="container">
+    <a href="{{ path(root_location) }}">
+        <picture>
+            <source media="(max-width: 799px)" srcset="{{ asset('assets/images/autoin_logo_294w.jp2') }}" type='image/jp2'>
+            <source media="(max-width: 799px)" srcset="{{ asset('assets/images/autoin_logo_294w.jpg') }}">
+            <source media="(min-width: 800px)" srcset="{{ asset('assets/images/autoin_logo_587w.jp2') }}" type='image/jp2'>
+            <source media="(min-width: 800px)" srcset="{{ asset('assets/images/autoin_logo_587w.jpg') }}">
+            <img src="{{ asset('assets/images/autoin_logo_294w.jpg') }}" alt="AutoIn Bilskadesenter AS Logo">
+        </picture>
+    </a>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+
+    <div class="nav">
+        {% if menu_items is defined and menu_items.searchHits is not empty %}
+            {% for item in menu_items.searchHits %}
+                <a href="{{ path(item.valueObject) }}" class="nav-link{% if location.pathString starts with item.valueObject.pathString %} active{% endif %}">{{ ez_content_name(item.valueObject.contentInfo) }}</a></li>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <a class="btn btn-outline-info" href="#" role="button">Ring oss</a>
+
+</nav>
+<header>
+
+</header>

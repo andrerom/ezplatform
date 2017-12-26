@@ -1,0 +1,37 @@
+ezpublish:
+    system:
+        site_group:
+            pagelayout: '@ezdesign/pagelayout.html.twig'
+
+            content_view:
+                full:
+                    folder:
+                        controller: 'app.controller.page_query:menuLocationQueryAction'
+                        template: '@ezdesign/full/folder.html.twig'
+                        match: { Identifier\ContentType: [ 'folder' ] }
+                        params:
+                            query:
+                                query_type: 'AppBundle:LocationChildren'
+                                parameters: { parent: '@=location' }
+                                assign_results_to: 'children'
+
+                    misc:
+                        controller: 'app.controller.page_query:menuLocationQueryAction'
+                        template: '@ezdesign/full/page.html.twig'
+                        match: { Identifier\ContentType: [ 'gallery', 'blog' ] }
+                        params:
+                            query:
+                                query_type: 'AppBundle:LocationChildren'
+                                parameters: { parent: '@=location' }
+                                assign_results_to: 'children'
+
+                    # front page, does not list up children, otheriwse same as others
+                    home_page:
+                        controller: 'app.controller.page_query:menuLocationQueryAction'
+                        template: '@ezdesign/full/page.html.twig'
+                        match: { Identifier\ContentType: [ 'home_page', 'contact_form' ] }
+
+                footer:
+                    footer_item:
+                        template: '@ezdesign/layout/footer.html.twig'
+                        match: { Id\Location: 60 }

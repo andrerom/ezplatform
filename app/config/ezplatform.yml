@@ -1,3 +1,12 @@
+imports:
+    - { resource: image_variations.yml }
+    - { resource: views.yml }
+
+# Define autoin design to use autoin and standard theme (in order)
+ezdesign:
+    design_list:
+        autoin: [autoin, standard]
+
 ezpublish:
     # HttpCache settings, By default 'local' (Symfony HttpCache Proxy), by setting it to 'http' you can point it to Varnish
     http_cache:
@@ -27,7 +36,7 @@ ezpublish:
 
     # System settings, grouped by siteaccess and/or siteaccess group
     system:
-        site_group:
+        default:
             # Cache pool service, needs to be different per repository (database) on multi repository install.
             cache_service_name: '%cache_pool%'
             # These reflect the current installers, complete installation before you change them. For changing var_dir
@@ -37,7 +46,7 @@ ezpublish:
             # System languages. Note that by default, content, content types, and other data are in eng-GB locale,
             # so removing eng-GB from this list may lead to errors or content not being shown, unless you change
             # all eng-GB data to other locales first.
-            languages: [eng-GB]
+            languages: [nor-NO, eng-GB]
             content:
                 # As we by default enable EzSystemsPlatformHttpCacheBundle which is designed to expire all affected cache
                 # on changes, and as error / redirects now have separate ttl, we easier allow ttl to be greatly increased
@@ -46,12 +55,8 @@ ezpublish:
             http_cache:
                 purge_servers: ['%purge_server%']
 
-        # WARNING: Do not remove or rename this group.
-        admin_group:
-            cache_service_name: '%cache_pool%'
-            var_dir: var/site
-            languages: [eng-GB]
-            content:
-                default_ttl: '%httpcache_default_ttl%'
-            http_cache:
-                purge_servers: ['%purge_server%']
+        site:
+            design: autoin
+
+        admin:
+            languages: [nor-NO, eng-GB]

@@ -13,3 +13,12 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
+
+    app.controller.page_query:
+        class: AppBundle\Controller\PageQueryController
+        public: true
+        arguments:
+            - "@ezpublish.query_type_content_view_mapper"
+            - "@ezpublish.api.service.search"
+            - "@ezpublish.api.service.location"
+            - "$content.tree_root.location_id$"

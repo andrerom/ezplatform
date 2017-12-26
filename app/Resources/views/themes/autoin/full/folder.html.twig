@@ -1,0 +1,26 @@
+{% extends noLayout == true ? viewbaseLayout : pagelayout %}
+
+{% block content %}
+    <section class="folder">
+        <div class="row">
+           <div class="small-11 small-offset-1 columns">
+               <h1>{{ ez_render_field(content, 'name') }}</h1>
+           </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                {{ ez_render_field(content, 'short_description') }}
+            </div>
+        </div>
+
+        {% if not ez_is_field_empty(content, 'description') %}
+            <div class="row">
+                <div class="small-12 columns">
+                    {{ ez_render_field(content, 'description') }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% include '@ezdesign/parts/children.html.twig' %}
+    </section>
+{% endblock %}

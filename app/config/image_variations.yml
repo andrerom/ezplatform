@@ -1,0 +1,13 @@
+ezpublish:
+    system:
+        default:
+            image_variations:
+                banner_small:
+                    reference: ~
+                    filters:
+                        - { name: geometry/scalewidthdownonly, params: [375] }
+
+                banner_large:
+                    reference: ~
+                    filters:
+                        - { name: geometry/scalewidthdownonly, params: [1000] }

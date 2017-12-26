@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ app.request.locale|replace({'_': '-'}) }}">
+    <head>
+        {% if content is defined and title is not defined %}
+            {% set title = ez_content_name(content) %}
+        {% endif %}
+
+        {% block page_head %}
+            <title>{{ title|default('Home')|trans }} - AutoIn.no</title>
+        {% endblock %}
+
+        <meta charset="utf-8">
+        <meta name="generator" content="eZ Platform">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="Shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+
+        {% stylesheets filter='cssrewrite'
+            '%kernel.root_dir%/../vendor/components/bootstrap/css/bootstrap.css'
+        %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+        {% endstylesheets %}
+
+        {% if content.fields.image is defined and not ez_is_field_empty(content, 'image') %}
+            {% set largeImageAlias = ez_image_alias(content.getField('image'), content.versionInfo, 'banner_large').uri %}
+            {% set smallImageAlias = ez_image_alias(content.getField('image'), content.versionInfo, 'banner_small').uri %}
+        {% else %}
+            {# get by siteaccess config, ala: { ezpublish.configResolver.parameter('api_keys.google_maps') }#}
+        {% endif %}
+        <style type="text/css">
+            html, body { height: 100% }
+            #non-footer { min-height: 100% }
+            .navbar-dark .nav-link {
+                color: rgba(255, 255, 255, 0.6);
+            }
+            .navbar-dark .nav-link:focus, .navbar-dark .nav-link:hover {
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            .navbar-dark .nav-link.show,
+            .navbar-dark .nav-link.active {
+                color: white;
+            }
+            header {
+                background-image: url("{{ smallImageAlias|default('') }}");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-position: center;
+                min-height: 210px;
+            }
+            main {
+                padding-top: 1rem;
+                padding-bottom: 31.5rem;/* mobile first, 2 x 15rem + 1.5rem footer height */
+            }
+            footer {
+                color: #0a0a0a;
+                background-color: #e6e6e6;
+                margin-top: -30.5rem;/* mobile first, 2 x 15rem + 0.5rem footer height */
+            }
+
+            footer .container {
+                padding-top: 1rem;
+                padding-bottom: .5rem;
+            }
+            footer .container .col {  height: 15rem; min-width: 25rem; max-width: 25rem; overflow: hidden; }
+
+            @media (min-width: 799px) {
+                header {
+                    background-image: url("{{ largeImageAlias|default('') }}");
+                    min-height: 320px;
+                }
+                header > .header-box { position: fixed; z-index: 999; }
+                /*footer*/
+                main {padding-bottom: 17.5rem;}
+                footer {margin-top: -16.5rem;}
+
+                /*responsive header */
+                @media (min-width: 1024px) { header {  min-height: 370px; } }
+                @media (min-width: 1200px) { header {  min-height: 430px; } }
+                @media (min-width: 1440px) { header {  min-height: 490px; } }
+            }
+        </style>
+    </head>
+    <body>
+        <section id="non-footer">
+            {% block header %}
+                {% include '@ezdesign/layout/header.html.twig' %}
+            {% endblock %}
+
+            <main class="container">
+                {% block content %}{% endblock %}
+            </main>
+        </section>
+
+        {% block footer %}
+            {{ render_esi(controller('ez_content:viewAction', {
+                locationId: 60,
+                viewType: 'footer',
+             })) }}
+        {% endblock %}
+
+        {#% block javascripts %}
+            {% javascripts
+                '%kernel.root_dir%/../vendor/components/jquery/jquery.min.js'
+                '%kernel.root_dir%/../vendor/components/foundation/js/foundation.min.js'
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %#}
+    </body>
+</html>

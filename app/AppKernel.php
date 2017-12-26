@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Lolautruche\EzCoreExtraBundle\EzCoreExtraBundle(),
+            new Kaliop\eZMigrationBundle\EzMigrationBundle(),
             // eZ Systems
             new EzSystems\PlatformHttpCacheBundle\EzSystemsPlatformHttpCacheBundle(),
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
@@ -42,6 +44,8 @@ class AppKernel extends Kernel
             new EzSystems\EzPlatformAdminUiBundle\EzPlatformAdminUiBundle(),
             new EzSystems\EzPlatformAdminUiModulesBundle\EzPlatformAdminUiModulesBundle(),
             new EzSystems\EzPlatformAdminUiAssetsBundle\EzPlatformAdminUiAssetsBundle(),
+            // eZ Deps
+            new Netgen\TagsBundle\NetgenTagsBundle(),
             // Application
             new AppBundle\AppBundle(),
         ];
@@ -53,6 +57,7 @@ class AppKernel extends Kernel
                 $bundles[] = new EzSystems\PlatformBehatBundle\EzPlatformBehatBundle();
             // No break, test also needs dev bundles
             case 'dev':
+                $bundles[] = new EzSystems\CookbookBundle\EzSystemsCookbookBundle();
                 $bundles[] = new eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle();
                 $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
                 $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
