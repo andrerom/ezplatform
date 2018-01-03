@@ -1,0 +1,63 @@
+-
+    type: content
+    mode: update
+    match:
+        content_id: 1
+    content_type: folder
+    parent_location: 1
+    priority: 0
+    is_hidden: false
+    sort_field: priority
+    sort_order: ASC
+    remote_id: 9459d3c29e15006e45197295722c7ade
+    location_remote_id: f3e90596361e31d496d4026eb624c983
+    lang: eng-GB
+    section: 1
+    owner: 14
+    modification_date: 1514966308
+    publication_date: 1514966308
+    always_available: false
+    attributes:
+        name: 'Rømcke Holding AS'
+        short_name: Holding
+        short_description:
+            xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<section xmlns=\"http://docbook.org/ns/docbook\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:ezxhtml=\"http://ez.no/xmlns/ezpublish/docbook/xhtml\" xmlns:ezcustom=\"http://ez.no/xmlns/ezpublish/docbook/custom\" version=\"5.0-variant ezpublish-1.0\"><para>Folder represent the holding company, and any pages within it represents the companies themselves, while any article or folder here will be displayed on a future holding web page.</para></section>\n"
+        description:
+            xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<section xmlns=\"http://docbook.org/ns/docbook\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"5.0-variant ezpublish-1.0\"/>\n"
+        #show_children: true
+-
+    type: content
+    mode: create
+    content_type: home_page
+    parent_location: 2
+    priority: 0
+    is_hidden: false
+    sort_field: name
+    sort_order: ASC
+    remote_id: 0c8e2497c553c895fe34f76e8f773a84
+    location_remote_id: 167c3a3b055a47422097f78db01f6cd2
+    lang: eng-GB
+    section: 1
+    owner: 14
+    modification_date: 1514963141
+    publication_date: 1514963141
+    always_available: false
+    attributes: {  }
+-
+    type: content
+    mode: create
+    content_type: home_page
+    parent_location: 2
+    priority: 0
+    is_hidden: false
+    sort_field: name
+    sort_order: ASC
+    remote_id: 1a95be41fbf4c87d5e43f9d3f567fd46
+    location_remote_id: eb09ce17316f440aa6378fa2a8d519d3
+    lang: eng-GB
+    section: 1
+    owner: 14
+    modification_date: 1514964737
+    publication_date: 1514964737
+    always_available: false
+    attributes: {  }

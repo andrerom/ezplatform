@@ -1,0 +1,732 @@
+# Cleanup: Delete Setup tree, and Setup/Design sections
+-
+    type: content
+    mode: delete
+    match:
+        subtree: /1/48/
+
+-
+    type: section
+    mode: delete
+    match:
+        identifier: setup
+
+-
+    type: section
+    mode: delete
+    match:
+        identifier: design
+
+# Language
+-
+    # Create a new language
+    type: language
+    mode: create
+    lang: nor-NO
+    name: 'Norsk (bokmål)'
+
+
+# Type updates (translation)
+
+-
+    type: content_type
+    mode: update
+    match:
+        contenttype_identifier: folder
+    new_identifier: folder
+    name:
+        eng-GB: Folder
+        nor-NO: Mappe
+    description: {  }
+    name_pattern: '<short_name|name>'
+    url_name_pattern: ''
+    is_container: true
+    lang: eng-GB
+    attributes:
+        -
+            identifier: name
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            default-value: Folder
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 255, minStringLength: null }
+        -
+            identifier: short_name
+            type: ezstring
+            name:
+                eng-GB: 'Short title'
+                nor-NO: 'Kort tittle'
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 100, minStringLength: null }
+        -
+            identifier: short_description
+            type: ezrichtext
+            name:
+                eng-GB: 'Short description'
+                nor-NO: Intro
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: description
+            type: ezrichtext
+            name:
+                eng-GB: Description
+                nor-NO: Innhold
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 4
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: image
+            type: ezobjectrelation
+            name:
+                eng-GB: Image
+                nor-NO: Bilde
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: ''
+            position: 5
+            field-settings:
+                selectionMethod: 0
+                selectionRoot: 51
+                selectionContentTypes: [ image ]
+            validator-configuration: {  }
+
+-
+    type: content_type
+    mode: update
+    match:
+        contenttype_identifier: article
+    new_identifier: article
+    name:
+        eng-GB: Article
+        nor-NO: Artikkel
+    description: {  }
+    name_pattern: '<short_title|title>'
+    url_name_pattern: ''
+    is_container: false
+    lang: eng-GB
+    attributes:
+        -
+            identifier: title
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 255, minStringLength: null }
+        -
+            identifier: short_title
+            type: ezstring
+            name:
+                eng-GB: 'Short title'
+                nor-NO: 'Kort tittle'
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 100, minStringLength: null }
+        -
+            identifier: author
+            type: ezauthor
+            name:
+                eng-GB: Author
+                nor-NO: Forfatter
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: intro
+            type: ezrichtext
+            name:
+                eng-GB: Intro
+                nor-NO: Intro
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 4
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: body
+            type: ezrichtext
+            name:
+                eng-GB: Body
+                nor-NO: Inhhold
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 5
+            field-settings: {  }
+            validator-configuration: {  }
+        # Removing comments checkbox here (did not work, do manually)
+        -
+            identifier: image
+            type: ezobjectrelation
+            name:
+                eng-GB: Image
+                nor-NO: Bilde
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: ''
+            position: 6
+            field-settings:
+                selectionMethod: 0
+                selectionRoot: 51
+                selectionContentTypes: [ image ]
+            validator-configuration: {  }
+
+-
+    type: content_type
+    mode: update
+    match:
+        contenttype_identifier: image
+    new_identifier: image
+    name:
+        eng-GB: Image
+        nor-NO: Bilde
+    description: {  }
+    name_pattern: '<name>'
+    url_name_pattern: ''
+    is_container: false
+    lang: eng-GB
+    attributes:
+        -
+            identifier: name
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 150, minStringLength: null }
+        -
+            identifier: caption
+            type: ezrichtext
+            name:
+                eng-GB: Caption
+                nor-NO: Bildetekst
+            description:
+                eng-GB: 'Caption, optionally for having descriptive text about the image which will be shown benath it'
+                nor-NO: 'Bildetekst, valgfri beskrivelse av bildet (motivet) som kommer opp under bildet'
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: image
+            type: ezimage
+            name:
+                eng-GB: Image
+                nor-NO: Bilde
+            description:
+                eng-GB: 'Image file, and optionally alternative text for screen readers, blind people, search engines (SEO), ...'
+                nor-NO: 'Bildefil, og valgfri bilde tekst for skjerm lesere, blinde, søkemoterer (SEO), ...'
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration:
+                FileSizeValidator: { maxFileSize: 10485760 }
+
+-
+    type: content_type
+    mode: update
+    match:
+        contenttype_identifier: file
+    new_identifier: file
+    name:
+        eng-GB: File
+        nor-NO: Fil
+    description: {  }
+    name_pattern: '<name>'
+    url_name_pattern: null
+    is_container: false
+    lang: eng-GB
+    attributes:
+        -
+            identifier: name
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            default-value: 'New file'
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: null, minStringLength: null }
+        -
+            identifier: description
+            type: ezrichtext
+            name:
+                eng-GB: Description
+                nor-NO: Beskrivelse
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: file
+            type: ezbinaryfile
+            name:
+                eng-GB: File
+                nor-NO: Fil
+            description: {  }
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration:
+                FileSizeValidator: { maxFileSize: null }
+-
+    type: content_type
+    mode: update
+    match:
+        contenttype_identifier: user
+    new_identifier: user
+    name:
+        eng-GB: User
+        nor-NO: Bruker
+    description: {  }
+    name_pattern: '<first_name> <last_name>'
+    url_name_pattern: null
+    is_container: false
+    lang: eng-GB
+    attributes:
+        -
+            identifier: first_name
+            type: ezstring
+            name:
+                eng-GB: 'First name'
+                nor-NO: Fornavn
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 255, minStringLength: null }
+        -
+            identifier: last_name
+            type: ezstring
+            name:
+                eng-GB: 'Last name'
+                nor-NO: Etternavn
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 255, minStringLength: null }
+        -
+            identifier: user_account
+            type: ezuser
+            name:
+                eng-GB: 'User account'
+                nor-NO: Brukerkonto
+            description: {  }
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: true
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: signature
+            type: eztext
+            name:
+                eng-GB: Signature
+                nor-NO: Signatur
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 4
+            field-settings:
+                textRows: 10
+            validator-configuration: {  }
+        -
+            identifier: image
+            type: ezimage
+            name:
+                eng-GB: Image
+                nor-NO: Bilde
+            description: {  }
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 5
+            field-settings: {  }
+            validator-configuration:
+                FileSizeValidator: { maxFileSize: 10485760 }
+-
+    type: content_type
+    mode: update
+    match:
+        contenttype_identifier: user_group
+    new_identifier: user_group
+    name:
+        eng-GB: 'User group'
+        nor-NO: Brukergruppe
+    description: {  }
+    name_pattern: '<name>'
+    url_name_pattern: null
+    is_container: true
+    lang: eng-GB
+    attributes:
+        -
+            identifier: name
+            type: ezstring
+            name:
+                eng-GB: Name
+                nor-NO: Navn
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 255, minStringLength: null }
+        -
+            identifier: description
+            type: ezstring
+            name:
+                eng-GB: Description
+                nor-NO: Beskrivelse
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: 255, minStringLength: null }
+
+
+# Type creation
+
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: home_page
+    name:
+        eng-GB: 'Home page'
+        nor-NO: 'Forside'
+    description: {  }
+    name_pattern: '<title>'
+    url_name_pattern: ''
+    is_container: true
+    lang: eng-GB
+    attributes:
+        -
+            identifier: title
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: null, minStringLength: null }
+        -
+            identifier: image
+            type: ezobjectrelation
+            name:
+                eng-GB: Image
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: ''
+            position: 2
+            field-settings:
+                selectionMethod: 0
+                selectionRoot: 51
+                selectionContentTypes: [ image ]
+            validator-configuration: {  }
+        -
+            identifier: url
+            type: ezurl
+            name:
+                eng-GB: Url
+                nor-NO: Url
+            description: {  }
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: description
+            type: ezrichtext
+            name:
+                eng-GB: Description
+                nor-NO: Innhold
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 4
+            field-settings: {  }
+            validator-configuration: {  }
+
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: contact_form
+    name:
+        eng-GB: 'Contact form'
+        nor-NO: 'Kontaktskjema'
+    description: {  }
+    name_pattern: '<title>'
+    url_name_pattern: ''
+    is_container: false
+    lang: eng-GB
+    attributes:
+        -
+            identifier: title
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: null, minStringLength: null }
+        -
+            identifier: description
+            type: ezrichtext
+            name:
+                eng-GB: Description
+                nor-NO: Besrivelse
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration: {  }
+        -
+            identifier: image
+            type: ezimage
+            name:
+                eng-GB: Image
+                nor-NO: Bilde
+            description: {  }
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 3
+            field-settings: {  }
+            validator-configuration:
+                FileSizeValidator: { maxFileSize: 10485760 }
+        -
+            identifier: email
+            type: ezemail
+            name:
+                eng-GB: E-mail
+                nor-NO: E-post
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 4
+            field-settings: {  }
+            validator-configuration:
+                EmailAddressValidator: {  }
+        -
+            identifier: location
+            type: ezgmaplocation
+            name:
+                eng-GB: Location
+                nor-NO: 'Kartlokasjon'
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 5
+            field-settings: {  }
+            validator-configuration: {  }
+
+-
+    type: content_type
+    mode: create
+    content_type_group: Media
+    identifier: gallery
+    name:
+        eng-GB: Gallery
+        nor-NO: Galleri
+    description:
+        eng-GB: 'Media gallery for collection of related images, videos, ...'
+        nor-NO: 'Medie galleri for samling av relaterte bilder, videoer, ...'
+    name_pattern: '<title>'
+    url_name_pattern: ''
+    is_container: true
+    lang: eng-GB
+    attributes:
+        -
+            identifier: title
+            type: ezstring
+            name:
+                eng-GB: Title
+                nor-NO: Tittel
+            description: {  }
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 1
+            field-settings: {  }
+            validator-configuration:
+                StringLengthValidator: { maxStringLength: null, minStringLength: null }
+        -
+            identifier: description
+            type: ezrichtext
+            name:
+                eng-GB: Description
+                nor-NO: Beskrivelse
+            description: {  }
+            required: false
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: content
+            position: 2
+            field-settings: {  }
+            validator-configuration: {  }
