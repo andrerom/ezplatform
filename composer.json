@@ -15,7 +15,8 @@
     },
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle/"
+            "AppBundle\\": "src/AppBundle/",
+            "BlogBundle\\": "src/BlogBundle/"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
@@ -48,6 +49,7 @@
         "ezsystems/ezplatform-design-engine": "^2.0",
         "ezsystems/ezplatform-standard-design": "^0.1",
         "ezsystems/ezplatform-cron": "^2.0",
+        "ezsystems/eztags-ls": "^2.2",
         "netgen/richtext-datatype-bundle": "^1.1",
         "netgen/ezplatformsearch": "^1.2.2",
         "knplabs/knp-menu-bundle": "^2.2.1",
@@ -57,6 +59,7 @@
         "roave/security-advisories": "dev-master",
         "leafo/scssphp": "^0.7.6",
         "symfony/thanks": "^1.0.7"
+
     },
     "require-dev": {
         "behat/behat": "^3.4.3",
@@ -77,7 +80,8 @@
         "legacy-scripts": [
             "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::installLegacyBundlesExtensions",
-            "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::generateAutoloads"
+            "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::generateAutoloads",
+            "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::symlinkLegacyFiles"
         ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

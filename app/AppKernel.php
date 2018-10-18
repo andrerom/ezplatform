@@ -50,6 +50,7 @@ class AppKernel extends Kernel
             new Netgen\Bundle\RichTextDataTypeBundle\NetgenRichTextDataTypeBundle(),
             // Application
             new AppBundle\AppBundle(),
+            new BlogBundle\BlogBundle(),
         ];
 
         switch ($this->getEnvironment()) {

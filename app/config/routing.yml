@@ -1,3 +1,8 @@
+blog:
+    resource: "@BlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 login:
     path: /login
     defaults: { _controller: ezpublish.security.controller:loginAction }
@@ -41,3 +46,7 @@ platform1_admin_route:
     defaults:
         path: /admin
         permanent: true
+
+#oauth_list:
+#    path: /oauthadmin/{slug}
+#    controller: AppBundle\Controller\OauthController::action

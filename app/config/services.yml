@@ -13,3 +13,19 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
+
+    app.controller.menu:
+        class: AppBundle\Controller\MenuController
+        public: true
+        arguments:
+            - '@templating'
+            - '@ezpublish.api.service.search'
+            - '@ezpublish.api.service.location'
+            - '@app.query_type.children'
+            - 2
+            - ~
+
+    app.query_type.children:
+        class: AppBundle\QueryType\ChildrenQueryType
+        tags:
+            - { name: ezpublish.query_type }

@@ -1,0 +1,54 @@
+{% extends noLayout == true ? viewbaseLayout : pagelayout %}
+
+{% block page_head %}
+    {% set title = content.name ~ " - " ~ content.contentInfo.publishedDate|localizeddate('short', 'short', app.request.locale) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <section class="content-type-folder full-view">
+        <div class="banner-image">
+            <div class="thumbnail text-center">
+                <div class="title">
+                    <h1 class="field-title">{{ ez_render_field(content, 'name') }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+
+                    <h2 class="field-short-name text-center">{{ ez_render_field(content, 'short_name') }}</h2>
+
+                    <div class="field-description text-center">
+                        {{ ez_render_field(content, 'short_description') }}
+                    </div>
+
+                    <div class="field-description">
+                        {{ ez_render_field(content, 'description') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="children">
+            {% if children.searchHits|length > 0 %}
+                {% for child in children.searchHits %}
+                    <div class="container">
+                        {{ render(controller('ez_content:viewAction', {
+                            locationId: child.valueObject.id,
+                            viewType: 'line',
+                            layout: false
+                        })) }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+
+        <div class="sitemap">
+            {{ render( url( 'ez_legacy', {'module_uri': '/content/view/sitemap/2', 'layout': false} ) ) }}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends noLayout == true ? "@ezdesign/no_layout.html.twig" : "@ezdesign/pagelayout.html.twig" %}
+
+{% block content %}
+    {{ module_result.content|raw }}
+{% endblock %}

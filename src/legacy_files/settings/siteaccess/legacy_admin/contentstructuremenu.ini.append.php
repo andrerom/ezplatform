@@ -7,4 +7,6 @@ ShowClasses[]=folder
 ShowClasses[]=user_group
 ShowClasses[]=frontpage
 ShowClasses[]=blog
+ShowClasses[]=article
+ShowClasses[]=legacy_article
 */ ?>

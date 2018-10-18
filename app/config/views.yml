@@ -1,0 +1,26 @@
+ezpublish:
+    system:
+        site_group:
+            pagelayout: "@ezdesign/pagelayout.html.twig"
+
+            content_view:
+                full:
+                    full_folder:
+                        # In order to get Query type to work we need to use
+                        # Query Type controller, here with location action
+                        controller: "ez_query:locationQueryAction"
+                        template: "@ezdesign/full/folder.html.twig"
+                        match:
+                            Identifier\ContentType: [folder]
+                        params:
+                            query:
+                                query_type: "AppBundle:Children"
+                                parameters:
+                                    parent_location: "@=location"
+                                assign_results_to: children
+
+                line:
+                    line_article:
+                        template: "@ezdesign/line/article.html.twig"
+                        match:
+                            Identifier\ContentType: [article]
